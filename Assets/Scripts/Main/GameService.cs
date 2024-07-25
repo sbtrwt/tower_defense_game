@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using TowerDefense.Events;
+using TowerDefense.Map;
 using UnityEngine;
 
 public class GameService : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private EventService eventService;
+    private MapService mapService;
+
+    [SerializeField] private MapSO mapScriptableObject;
+
+    private void Start()
     {
-        
+        InitializeServices();
+        InjectDependencies();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InitializeServices()
     {
-        
+        eventService = new EventService();
+        mapService = new MapService(mapScriptableObject);
+       
     }
+
+    private void InjectDependencies()
+    {
+        mapService.Init(eventService);
+       
+    }
+
 }
