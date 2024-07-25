@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c757713916602438d50ffa3ce04e23, type: 3}
+  m_Name: MapScriptableObject
+  m_EditorClassIdentifier: 
+  MapDatas:
+  - MapID: 1
+    MapPrefab: {fileID: 8760387701347568029, guid: f855f0fdbf0581247b1ad6cb74baefbf, type: 3}
+    SpawningPoint: {x: -7.5, y: -5.5, z: 0}
+    WayPoints:
+    - {x: -7.5, y: -2.5, z: 0}
+    - {x: -3.5, y: -2.5, z: 0}
+    - {x: -3.5, y: -3.5, z: 0}
+    - {x: 5.5, y: 3.5, z: 0}
+    - {x: 5.5, y: 1.5, z: 0}
+    - {x: 6.5, y: 1.5, z: 0}
+    - {x: 6.5, y: -1.5, z: 0}
+    - {x: 2.5, y: -1.5, z: 0}
+    - {x: 2.5, y: 1.5, z: 0}
+    - {x: -0.5, y: 1.5, z: 0}
+    - {x: -0.5, y: -3.5, z: 0}
+    - {x: 8.5, y: -3.5, z: 0}
+  TileOverlay: {fileID: 1395417490807759795, guid: 2ef68b6260dccc2419bb64f297e60273, type: 3}
+  DefaultTileColor: {r: 1, g: 0.95660377, b: 0.95660377, a: 0}
+  SpawnableTileColor: {r: 0, g: 0.85317826, b: 0.96981126, a: 0.5411765}
+  NonSpawnableTileColor: {r: 0.97735846, g: 0.020284778, b: 0.020284778, a: 0.58431375}
