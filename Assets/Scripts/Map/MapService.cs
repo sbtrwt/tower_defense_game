@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TowerDefense.Events;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -49,6 +50,8 @@ namespace TowerDefense.Map
                     break;
             }
         }
+        public Vector3 GetEnemySpawnPositionForCurrentMap() => currentMapData.SpawningPoint;
+        public List<Vector3> GetWayPointsForCurrentMap() => currentMapData.WayPoints;
         private enum TileOverlayColor
         {
             TRANSPARENT,

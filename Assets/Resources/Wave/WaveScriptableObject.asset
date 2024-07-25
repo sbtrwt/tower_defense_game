@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223a641de9305de4d841cb8a48a4e7cf, type: 3}
+  m_Name: WaveScriptableObject
+  m_EditorClassIdentifier: 
+  SpawnRate: 0.25
+  WaveConfigurations:
+  - {fileID: 11400000, guid: 1280af212a19bc342ad1430b0583b542, type: 2}
+  EnemyPrefab: {fileID: 502549442032831092, guid: a759b2610e5e7314793e587e6aef40ad, type: 3}
+  EnemiesSO:
+  - {fileID: 11400000, guid: 5288796155e7a8f4db16b3d053427dc5, type: 2}
