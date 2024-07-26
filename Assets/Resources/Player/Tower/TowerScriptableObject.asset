@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: TowerScriptableObject
   m_EditorClassIdentifier: 
   Type: 0
-  Prefab: {fileID: 0}
-  RotationSpeed: 0
+  Prefab: {fileID: 2467798545032345212, guid: 31d3c19a08ab0b840aa545f0823a2871, type: 3}
+  RotationSpeed: 100
   projectileType: 0
-  Range: 0
-  Cost: 0
-  AttackableEnemies: 
-  AttackRate: 0
+  Range: 2
+  Cost: 10
+  AttackableEnemies: 0000000001000000
+  AttackRate: 1

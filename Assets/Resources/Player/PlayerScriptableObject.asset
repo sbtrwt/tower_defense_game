@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a1b1d939443194d84a67e636e4eb9c, type: 3}
   m_Name: PlayerScriptableObject
   m_EditorClassIdentifier: 
-  Health: 0
-  Money: 0
-  TowersSO: []
-  ProjectilesSO: []
-  ProjectilePrefab: {fileID: 0}
+  Health: 100
+  Money: 100
+  TowersSO:
+  - {fileID: 11400000, guid: 2f05fa8dafb38944baf08b01a75e327c, type: 2}
+  ProjectilesSO:
+  - {fileID: 11400000, guid: 7a69a2e36af3101478d9dc39a3d4c8c4, type: 2}
+  ProjectilePrefab: {fileID: 704065158512311104, guid: e47956b37f32b234897bd6f3ef63dfc3, type: 3}
