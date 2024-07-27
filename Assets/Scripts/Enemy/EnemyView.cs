@@ -16,7 +16,7 @@ namespace TowerDefense.Enemy
             animator = GetComponent<Animator>();
         }
 
-        private void Update() => Controller.FollowWayPoints();
+        private void Update() => Controller?.FollowWayPoints();
 
         public void SetRenderer(Sprite spriteToSet)
         {
@@ -27,17 +27,20 @@ namespace TowerDefense.Enemy
 
         public void SetSortingOrder(int sortingOrder) => spriteRenderer.sortingOrder = sortingOrder;
 
-        public void PopBloon()
+        public void PopEnemy()
         {
             animator.enabled = true;
-            animator.Play("Pop", 0);
+            animator.Play("pop", 0);
         }
 
+        /// <summary>
+        /// Called on pop event trigger of pop animation
+        /// </summary>
         public void PopAnimationPlayed()
         {
             spriteRenderer.sprite = null;
             gameObject.SetActive(false);
-            //Controller.OnPopAnimationPlayed();
+            Controller.OnPopAnimationPlayed();
         }
     }
 }

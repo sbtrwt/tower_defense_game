@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223a641de9305de4d841cb8a48a4e7cf, type: 3}
   m_Name: WaveScriptableObject
   m_EditorClassIdentifier: 
-  SpawnRate: 0.25
+  SpawnRate: 0.8
   WaveConfigurations:
   - {fileID: 11400000, guid: 1280af212a19bc342ad1430b0583b542, type: 2}
   EnemyPrefab: {fileID: 502549442032831092, guid: a759b2610e5e7314793e587e6aef40ad, type: 3}
   EnemiesSO:
   - {fileID: 11400000, guid: 5288796155e7a8f4db16b3d053427dc5, type: 2}
+  - {fileID: 11400000, guid: 3a9c0d3840488ce458cb7538dd550db8, type: 2}
+  - {fileID: 11400000, guid: 631ac221465fdd549915e5ea0b54a8b6, type: 2}

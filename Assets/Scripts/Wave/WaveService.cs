@@ -4,39 +4,45 @@ using System.Threading.Tasks;
 using TowerDefense.Enemy;
 using TowerDefense.Events;
 using TowerDefense.Map;
+using TowerDefense.Player;
+using TowerDefense.Sound;
+using TowerDefense.UI;
 using UnityEngine;
 
 namespace TowerDefense.Wave
 {
     public class WaveService
     {
-        private WaveSO waveSO;
+        private UIService uiService;
+        private MapService mapService;
+        private PlayerService playerService;
+        private SoundService soundService;
+        private EventService eventService;
+
+        private WaveSO waveScriptableObject;
+        private EnemyPool enemyPool;
 
         private int currentWaveId;
         private List<WaveData> waveDatas;
         private List<EnemyController> activeEnemies;
 
-        private MapService mapService;
-        private EventService eventService;
-        public WaveService(WaveSO waveScriptableObject) 
-        {
-            this.waveSO = waveScriptableObject; 
-        }
+        public WaveService(WaveSO waveScriptableObject) => this.waveScriptableObject = waveScriptableObject;
 
-        public void Init(EventService eventService, MapService mapService)
+        public void Init(UIService uiService, MapService mapService, PlayerService playerService, SoundService soundService, EventService eventService)
         {
-           
+            this.uiService = uiService;
             this.mapService = mapService;
+            this.playerService = playerService;
+            this.soundService = soundService;
             this.eventService = eventService;
-            InitializeEnemies();
+            InitializeEnemys();
             SubscribeToEvents();
         }
-        private void InitializeEnemies()
+
+        private void InitializeEnemys()
         {
-            //bloonPool = new BloonPool(this, playerService, soundService, waveScriptableObject);
+            enemyPool = new EnemyPool(this, playerService, soundService, waveScriptableObject);
             activeEnemies = new List<EnemyController>();
-            LoadWaveDataForMap(1);
-            StarNextWave();
         }
 
         private void SubscribeToEvents() => eventService.OnMapSelected.AddListener(LoadWaveDataForMap);
@@ -44,35 +50,58 @@ namespace TowerDefense.Wave
         private void LoadWaveDataForMap(int mapId)
         {
             currentWaveId = 0;
-            waveDatas = waveSO.WaveConfigurations.Find(config => config.MapID == mapId).WaveDatas;
+            waveDatas = waveScriptableObject.WaveConfigurations.Find(config => config.MapID == mapId).WaveDatas;
+            uiService.UpdateWaveProgressUI(currentWaveId, waveDatas.Count);
         }
+
         public void StarNextWave()
         {
             currentWaveId++;
-            var bloonsToSpawn = GetEnemiesForCurrentWave();
+            var enemysToSpawn = GetEnemysForCurrentWave();
             var spawnPosition = mapService.GetEnemySpawnPositionForCurrentMap();
-            SpawnBloons(bloonsToSpawn, spawnPosition, 0, waveSO.SpawnRate);
+            SpawnEnemies(enemysToSpawn, spawnPosition, 0, waveScriptableObject.SpawnRate);
         }
-        private List<EnemyType> GetEnemiesForCurrentWave() => waveDatas.Find(waveData => waveData.WaveID == currentWaveId).ListOfEnemies;
-        public async void SpawnBloons(List<EnemyType> enemiesToSpawn, Vector3 spawnPosition, int startingWaypointIndex, float spawnRate)
+
+        public async void SpawnEnemies(List<EnemyType> enemysToSpawn, Vector3 spawnPosition, int startingWaypointIndex, float spawnRate)
         {
-            GameObject enemyParent = new GameObject("enemy");
-            foreach (EnemyType enemyType in enemiesToSpawn)
+            foreach (EnemyType enemyType in enemysToSpawn)
             {
-                EnemyController enemy = new EnemyController(waveSO.EnemyPrefab, enemyParent.transform);
-                enemy.Init(waveSO.EnemiesSO.Find(so => so.Type == enemyType));
+                EnemyController enemy = enemyPool.GetEnemy(enemyType);
                 enemy.SetPosition(spawnPosition);
                 enemy.SetWayPoints(mapService.GetWayPointsForCurrentMap(), startingWaypointIndex);
 
-
-                AddBloon(enemy);
+                AddEnemy(enemy);
                 await Task.Delay(Mathf.RoundToInt(spawnRate * 1000));
             }
         }
-        private void AddBloon(EnemyController enemyToAdd)
+
+        private void AddEnemy(EnemyController enemyToAdd)
         {
             activeEnemies.Add(enemyToAdd);
             enemyToAdd.SetOrderInLayer(-activeEnemies.Count);
         }
+
+        public void RemoveEnemy(EnemyController enemy)
+        {
+            enemyPool.ReturnItem(enemy);
+            
+            activeEnemies.Remove(enemy);
+            if (HasCurrentWaveEnded())
+            {
+                soundService.PlaySoundEffects(Sound.SoundType.WaveComplete);
+                uiService.UpdateWaveProgressUI(currentWaveId, waveDatas.Count);
+
+                if (IsLevelWon())
+                    uiService.UpdateGameEndUI(true);
+                else
+                    uiService.SetNextWaveButton(true);
+            }
+        }
+
+        private List<EnemyType> GetEnemysForCurrentWave() => waveDatas.Find(waveData => waveData.WaveID == currentWaveId).ListOfEnemies;
+
+        private bool HasCurrentWaveEnded() => activeEnemies.Count == 0;
+
+        private bool IsLevelWon() => currentWaveId >= waveDatas.Count;
     }
 }
