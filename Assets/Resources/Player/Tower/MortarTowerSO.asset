@@ -16,7 +16,7 @@ MonoBehaviour:
   Prefab: {fileID: 352015644371949440, guid: 7a3b8c83c9fa19e459492d65efdbd9a5, type: 3}
   RotationSpeed: 100
   projectileType: 1
-  Range: 2.5
-  Cost: 30
+  Range: 4
+  Cost: 100
   AttackableEnemies: 000000000100000002000000
-  AttackRate: 1
+  AttackRate: 0.6

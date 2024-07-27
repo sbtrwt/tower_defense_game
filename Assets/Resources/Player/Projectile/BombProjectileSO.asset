@@ -15,6 +15,6 @@ MonoBehaviour:
   Type: 1
   Sprite: {fileID: 21300000, guid: ce4df5a1fe463374f812c82f5c28fa67, type: 3}
   Speed: 20
-  Damage: 0.5
+  Damage: 2
   IsSplashAttack: 1
-  SplashEffectRadius: 0.5
+  SplashEffectRadius: 1

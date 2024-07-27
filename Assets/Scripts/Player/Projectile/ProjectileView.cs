@@ -11,8 +11,12 @@ namespace TowerDefense.Player
         private SpriteRenderer spriteRenderer;
         [SerializeField]
         private float splashRadius = 0.1f; // Define the splash radius
-
-        private void Awake() => spriteRenderer = GetComponent<SpriteRenderer>();
+      
+        private void Awake()
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+           
+        }
 
         public void SetController(ProjectileController controller) => this.controller = controller;
 
@@ -36,7 +40,9 @@ namespace TowerDefense.Player
                 EnemyController hitEnemyController = collision.GetComponent<EnemyView>().Controller;
                // Trigger the splash damage effect
                 if (controller.IsSplashAttack())
-                { ApplySplashDamage(hitEnemyController); }
+                {
+                    ApplySplashDamage(hitEnemyController);
+                }
                 // Notify the controller about the hit
                 controller.OnHitEnemy(hitEnemyController);
 
@@ -58,7 +64,7 @@ namespace TowerDefense.Player
                     // Apply damage or effect to the enemy
                     if (!hitEnemyController.Equals(enemyController))
                     {
-                        Debug.Log(enemyController); 
+                        
                         controller.OnSplashHitEnemy(enemyController); 
                     }
                 }
@@ -71,5 +77,7 @@ namespace TowerDefense.Player
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, splashRadius);
         }
+
+       
     }
 }

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   Health: 10
-  Damage: 20
-  Reward: 4
+  Damage: 5
+  Reward: 5
   Speed: 3
   Sprite: {fileID: 21300000, guid: 76d8f5acc972c3a498822855fe3ea0a6, type: 3}
   LayeredEnemies: 

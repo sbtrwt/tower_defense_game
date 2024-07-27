@@ -33,7 +33,13 @@ namespace TowerDefense.UI
 
         public void OnDrag(PointerEventData eventData)
         {
-            rectTransform.anchoredPosition += eventData.delta;
+            Vector2 localPoint;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                rectTransform.parent as RectTransform,
+                eventData.position,
+                eventData.pressEventCamera,
+                out localPoint);
+            rectTransform.localPosition = localPoint;
             owner.TowerDraggedAt(eventData.position);
         }
 

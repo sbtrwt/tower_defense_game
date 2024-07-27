@@ -15,4 +15,4 @@ MonoBehaviour:
   Type: 1
   Name: Mortar
   Sprite: {fileID: 21300000, guid: 4bb176d2d338d584699838d2ed4426fd, type: 3}
-  Cost: 30
+  Cost: 100
