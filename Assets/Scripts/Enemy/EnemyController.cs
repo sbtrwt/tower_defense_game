@@ -22,7 +22,7 @@ namespace TowerDefense.Enemy
 
         private const float waypointThreshold = 0.1f;
         private List<Vector3> waypoints;
-        private int currentHealth;
+        private float currentHealth;
         private int currentWaypointIndex;
         private EnemyState currentState;
 
@@ -66,9 +66,9 @@ namespace TowerDefense.Enemy
 
         public void SetOrderInLayer(int orderInLayer) => enemyView.SetSortingOrder(orderInLayer);
 
-        public void TakeDamage(int damageToTake)
+        public void TakeDamage(float damageToTake)
         {
-            int reducedHealth = currentHealth - damageToTake;
+            float reducedHealth = currentHealth - damageToTake;
             currentHealth = reducedHealth <= 0 ? 0 : reducedHealth;
 
             if (currentHealth <= 0 && currentState == EnemyState.ACTIVE)

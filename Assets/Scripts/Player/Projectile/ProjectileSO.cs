@@ -8,6 +8,8 @@ namespace TowerDefense.Player
         public ProjectileType Type;
         public Sprite Sprite;
         public float Speed;
-        public int Damage;
+        public float Damage;
+        public bool IsSplashAttack;
+        public float SplashEffectRadius;
     }
 }

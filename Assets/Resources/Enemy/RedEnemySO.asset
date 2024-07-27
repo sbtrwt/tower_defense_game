@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: RedEnemySO
   m_EditorClassIdentifier: 
   Type: 1
-  Health: 3
-  Damage: 3
-  Reward: 3
-  Speed: 5
-  Sprite: {fileID: 21300000, guid: 452913a0c3376d842a46e269d8cd42dd, type: 3}
+  Health: 10
+  Damage: 20
+  Reward: 4
+  Speed: 3
+  Sprite: {fileID: 21300000, guid: 76d8f5acc972c3a498822855fe3ea0a6, type: 3}
   LayeredEnemies: 
   LayerEnemySpawnRate: 0.3

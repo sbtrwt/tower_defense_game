@@ -12,7 +12,7 @@ namespace TowerDefense.Player
 
         private EnemyController target;
         private ProjectileState currentState;
-
+       
         public ProjectileController(PlayerService playerService, ProjectileView projectilePrefab, Transform projectileContainer)
         {
             this.playerService = playerService;
@@ -59,7 +59,13 @@ namespace TowerDefense.Player
                 SetState(ProjectileState.HIT_TARGET);
             }
         }
-
+        public void OnSplashHitEnemy(EnemyController enemyHit)
+        {
+            if (currentState == ProjectileState.ACTIVE)
+            {
+                enemyHit.TakeDamage(projectileScriptableObject.Damage);
+            }
+        }
         public void ResetProjectile()
         {
             target = null;
@@ -68,6 +74,9 @@ namespace TowerDefense.Player
         }
 
         private void SetState(ProjectileState newState) => currentState = newState;
+        public bool IsSplashAttack() => projectileScriptableObject.IsSplashAttack;
+        public float SplashAttackEffectRadius() => projectileScriptableObject.SplashEffectRadius;
+
     }
 
     public enum ProjectileState

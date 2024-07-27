@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c2761edf13350b478d6f28fa2346ad4, type: 3}
-  m_Name: ProjectileScriptableObject
+  m_Name: BulletProjectileSO
   m_EditorClassIdentifier: 
   Type: 0
-  Sprite: {fileID: 21300000, guid: ce4df5a1fe463374f812c82f5c28fa67, type: 3}
+  Sprite: {fileID: 21300000, guid: ec6b2c53136c8ae43a773e98ef67a030, type: 3}
   Speed: 10
-  Damage: 1
+  Damage: 0.05
+  IsSplashAttack: 0
+  SplashEffectRadius: 0

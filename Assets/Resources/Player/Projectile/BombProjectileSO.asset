@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50138aa316a94e34ca39693bfad8c91c, type: 3}
-  m_Name: YellowEnemySO
+  m_Script: {fileID: 11500000, guid: 1c2761edf13350b478d6f28fa2346ad4, type: 3}
+  m_Name: BombProjectileSO
   m_EditorClassIdentifier: 
-  Type: 0
-  Health: 5
-  Damage: 10
-  Reward: 2
-  Speed: 1
-  Sprite: {fileID: 21300000, guid: 452913a0c3376d842a46e269d8cd42dd, type: 3}
-  LayeredEnemies: 
-  LayerEnemySpawnRate: 0.2
+  Type: 1
+  Sprite: {fileID: 21300000, guid: ce4df5a1fe463374f812c82f5c28fa67, type: 3}
+  Speed: 20
+  Damage: 0.5
+  IsSplashAttack: 1
+  SplashEffectRadius: 0.5
