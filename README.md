@@ -11,7 +11,5 @@ Place the tower and stop enemy waves to reach end point.
   
 
 ### Gameplay
-[
-](https://youtu.be/cbvc_nXi1lY)
-
+https://youtu.be/cbvc_nXi1lY
 
